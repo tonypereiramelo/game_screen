@@ -10,33 +10,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => UploadPage(
-                    theme: theme,
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => UploadPage(
+                      theme: theme,
+                    ),
                   ),
                 ),
+                style: theme.elevatedButtonTheme.style,
+                child: const Text('Uploads Page'),
               ),
-              style: theme.elevatedButtonTheme.style,
-              child: const Text('Uploads Page'),
-            ),
-            const DSBoxSpacer.small(),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const GamePage(),
+              const DSBoxSpacer.small(),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const GamePage(),
+                  ),
                 ),
+                style: theme.elevatedButtonTheme.style,
+                child: const Text('View Game Screen'),
               ),
-              style: theme.elevatedButtonTheme.style,
-              child: const Text('View Game Screen'),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
