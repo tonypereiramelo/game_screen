@@ -7,25 +7,21 @@ class ShotTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: const [
-                  CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(32, 0, 0, 0),
-                    child: Text('Gol'),
-                  ),
-                ],
+            children: const [
+              CircleAvatar(
+                child: Icon(Icons.person),
               ),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.play_circle))
+              Padding(
+                padding: EdgeInsets.fromLTRB(32, 0, 0, 0),
+                child: Text('Gol'),
+              ),
             ],
           ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.play_circle))
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
+import 'package:timelines/timelines.dart';
 
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
@@ -16,15 +17,11 @@ class _GamePageState extends State<GamePage> {
         title: const Text('Game'),
         centerTitle: true,
       ),
-      body: ListView.separated(
-        itemCount: 3,
-        itemBuilder: (context, index) => const ShotTile(),
-        separatorBuilder: (context, index) => const VerticalDivider(
-          color: Colors.red,
-          width: 80,
-          thickness: 2,
-        ),
-      ),
+      body: Timeline.tileBuilder(
+          builder: TimelineTileBuilder.fromStyle(
+              contentsAlign: ContentsAlign.alternating,
+              contentsBuilder: (context, index) => const ShotTile(),
+              itemCount: 10)),
     );
   }
 }
