@@ -17,7 +17,7 @@ class _GamePageState extends State<GamePage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) => const ShotTile(),
