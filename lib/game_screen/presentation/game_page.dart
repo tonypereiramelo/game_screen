@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/presentation/widgets/scoreboard_widget.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
 
 class GamePage extends StatefulWidget {
@@ -18,9 +19,16 @@ class _GamePageState extends State<GamePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) => const ShotTile(),
+        child: Column(
+          children: [
+            const ScoreboardWidget(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) => const ShotTile(),
+              ),
+            ),
+          ],
         ),
       ),
     );
