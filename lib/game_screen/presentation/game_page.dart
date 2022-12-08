@@ -21,7 +21,14 @@ class _GamePageState extends State<GamePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const ScoreboardWidget(),
+            const ScoreboardWidget(
+              leftScore: '2',
+              leftTeamIcon: Icons.ac_unit_outlined,
+              leftTeamName: 'Team1',
+              rigthScore: '1',
+              rigthTeamIcon: Icons.sports_soccer,
+              rigthTeamName: 'Team2',
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: 10,

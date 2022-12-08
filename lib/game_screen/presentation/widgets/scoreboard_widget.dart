@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
 class ScoreboardWidget extends StatelessWidget {
-  const ScoreboardWidget({super.key});
+  const ScoreboardWidget({
+    super.key,
+    required this.leftScore,
+    required this.rigthScore,
+    required this.leftTeamIcon,
+    required this.rigthTeamIcon,
+    required this.leftTeamName,
+    required this.rigthTeamName,
+  });
+
+  final String leftScore;
+  final String rigthScore;
+  final IconData leftTeamIcon;
+  final IconData rigthTeamIcon;
+  final String leftTeamName;
+  final String rigthTeamName;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +35,9 @@ class ScoreboardWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 30,
-                    child: Icon(size: 38, Icons.ac_unit_outlined),
+                    child: Icon(size: 38, leftTeamIcon),
                   ),
                   const SizedBox(
                     width: 16,
@@ -35,7 +50,7 @@ class ScoreboardWidget extends StatelessWidget {
                       width: 38,
                       child: Center(
                         child: Text(
-                          '1',
+                          leftScore,
                           style: theme.textTheme.headline6,
                         ),
                       ),
@@ -52,7 +67,7 @@ class ScoreboardWidget extends StatelessWidget {
                       width: 38,
                       child: Center(
                         child: Text(
-                          '2',
+                          rigthScore,
                           style: theme.textTheme.headline6,
                         ),
                       ),
@@ -61,9 +76,9 @@ class ScoreboardWidget extends StatelessWidget {
                   const SizedBox(
                     width: 16,
                   ),
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 30,
-                    child: Icon(size: 38, Icons.sports_soccer),
+                    child: Icon(size: 38, rigthTeamIcon),
                   ),
                 ],
               ),
@@ -74,14 +89,14 @@ class ScoreboardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Time1',
+                    leftTeamName,
                     style: theme.textTheme.headline6,
                   ),
                   const SizedBox(
                     width: 16,
                   ),
                   Text(
-                    'Time2',
+                    rigthTeamName,
                     style: theme.textTheme.headline6,
                   ),
                 ],
