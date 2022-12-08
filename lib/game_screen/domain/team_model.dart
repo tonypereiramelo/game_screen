@@ -1,5 +1,12 @@
 class TeamModel {
-  TeamModel();
+  TeamModel({
+    this.teamName,
+    this.score,
+    this.shotType,
+    this.shotLink,
+    this.shotDate,
+    this.isLeftTeam,
+  });
 
   String? teamName;
   int? score;
