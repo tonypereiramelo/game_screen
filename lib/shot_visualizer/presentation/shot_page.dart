@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
 import 'package:game_screen/global/widgets/box_spacer.dart';
 import 'package:game_screen/shot_visualizer/presentation/widgets/shot_comments.dart';
 import 'package:video_player/video_player.dart';
 
 class ShotPage extends StatefulWidget {
-  const ShotPage({super.key, required this.teamModel});
+  const ShotPage({super.key, required this.videoLink});
 
-  final TeamModel teamModel;
+  final String videoLink;
 
   @override
   State<ShotPage> createState() => _ShotPageState();
@@ -18,8 +17,7 @@ class _ShotPageState extends State<ShotPage> {
   @override
   void initState() {
     super.initState();
-    controller =
-        VideoPlayerController.network(widget.teamModel.shotLink.toString());
+    controller = VideoPlayerController.network(widget.videoLink);
 
     controller.addListener(() {
       setState(() {});

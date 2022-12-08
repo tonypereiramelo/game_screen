@@ -30,7 +30,7 @@ class ShotTile extends StatelessWidget {
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ShotPage(
-                          teamModel: team,
+                          videoLink: team.shotLink.toString(),
                         ),
                       ),
                     ),
@@ -64,7 +64,7 @@ class ShotTile extends StatelessWidget {
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ShotPage(
-                          teamModel: team,
+                          videoLink: team.shotLink.toString(),
                         ),
                       ),
                     ),
