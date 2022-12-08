@@ -28,4 +28,15 @@ class TeamModel {
       "isLeftTeam": isLeftTeam,
     };
   }
+
+  TeamModel toDomain(){
+    return TeamModel(
+      teamName: teamName,
+      score: score,
+      shotType: shotType,
+      shotLink: shotLink,
+      shotDate: shotDate,
+      isLeftTeam: isLeftTeam,
+    );
+  }
 }
