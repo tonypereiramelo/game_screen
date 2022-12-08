@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/domain/team_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../global/widgets/box_spacer.dart';
 import '../infrastructure/upload_videos_repository.dart';
@@ -178,7 +179,7 @@ class _UploadPageState extends State<UploadPage> {
     if (file == null) return;
 
     final fileName = basename(file!.path);
-    final destination = 'games/game1/$fileName';
+    final destination = 'shots/$fileName';
 
     task = UploadRepository.uploadFile(destination, file!);
 
@@ -189,6 +190,7 @@ class _UploadPageState extends State<UploadPage> {
       task!.whenComplete(
         () async {
           final taskUrl = await task!.snapshot.ref.getDownloadURL();
+          final uid = const Uuid().v1();
           UploadRepository.createDocument(
             TeamModel(
               teamName: teamName,
@@ -198,6 +200,7 @@ class _UploadPageState extends State<UploadPage> {
               shotDate: task!.snapshot.metadata!.timeCreated,
               isLeftTeam: false,
             ),
+            uid,
           );
           setState(() {
             uploadIsCompleted = true;

@@ -18,11 +18,11 @@ class UploadRepository {
     }
   }
 
-  static Future createDocument(TeamModel teamModel) async {
+  static Future createDocument(TeamModel teamModel, String uid) async {
     try {
       final docRef = FirebaseFirestore.instance
-          .collection('games')
-          .doc('game1')
+          .collection('shots')
+          .doc(uid)
           .withConverter(
             fromFirestore: fromFirestore,
             toFirestore: toFirestore,
