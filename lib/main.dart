@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+        textTheme: TextTheme(
+          button: TextStyle(color: Colors.grey[600]),
+        ),
       ),
       home: const HomePage(),
     );
