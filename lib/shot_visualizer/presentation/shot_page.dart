@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/global/widgets/box_spacer.dart';
 import 'package:game_screen/shot_visualizer/presentation/widgets/shot_comments.dart';
 
 class ShotPage extends StatelessWidget {
@@ -39,6 +40,26 @@ class ShotPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 child: const ShotComments()),
           ],
+        ),
+      ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        child: TextField(
+          decoration: InputDecoration(
+              prefixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  DSBoxSpacer.small()
+                ],
+              ),
+              hintText: 'Write your comment',
+              hintStyle: theme.textTheme.button,
+              suffixIcon:
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.send)),
+              contentPadding: const EdgeInsets.all(24)),
         ),
       ),
     );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ShotCommentTile extends StatelessWidget {
-  const ShotCommentTile({super.key});
+  const ShotCommentTile(
+      {super.key, required this.userName, required this.userComment});
+  final String userName;
+  final String userComment;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +23,14 @@ class ShotCommentTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'userName',
+                userName,
                 style: theme.textTheme.subtitle2,
               ),
               const SizedBox(
                 height: 2,
               ),
               Text(
-                'Boqueado pelo STF',
+                userComment,
                 style: theme.textTheme.subtitle2,
               ),
               const SizedBox(
