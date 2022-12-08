@@ -29,7 +29,9 @@ class ShotTile extends StatelessWidget {
                   IconButton(
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const ShotPage(),
+                        builder: (context) => ShotPage(
+                          teamModel: team,
+                        ),
                       ),
                     ),
                     icon: const Icon(Icons.play_circle),
@@ -61,7 +63,9 @@ class ShotTile extends StatelessWidget {
                   IconButton(
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const ShotPage(),
+                        builder: (context) => ShotPage(
+                          teamModel: team,
+                        ),
                       ),
                     ),
                     icon: const Icon(Icons.play_circle),

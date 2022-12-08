@@ -29,7 +29,7 @@ class TeamModel {
     };
   }
 
-  TeamModel toDomain(){
+  TeamModel toDomain() {
     return TeamModel(
       teamName: teamName,
       score: score,
@@ -39,4 +39,13 @@ class TeamModel {
       isLeftTeam: isLeftTeam,
     );
   }
+
+  factory TeamModel.fromDomain(TeamModel teamModel) => TeamModel(
+        teamName: teamModel.teamName,
+        score: teamModel.score,
+        shotType: teamModel.shotType,
+        shotLink: teamModel.shotLink,
+        shotDate: teamModel.shotDate,
+        isLeftTeam: teamModel.isLeftTeam,
+      );
 }

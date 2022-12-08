@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const GamePage(),
+                    builder: (context) => GamePage(),
                   ),
                 ),
                 style: theme.elevatedButtonTheme.style,
