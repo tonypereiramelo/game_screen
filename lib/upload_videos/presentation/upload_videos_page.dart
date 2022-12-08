@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 
 import '../../global/widgets/box_spacer.dart';
-import '../infrastructure/api.dart';
+import '../infrastructure/upload_videos_repository.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({super.key, required this.theme});
@@ -90,7 +90,7 @@ class _UploadPageState extends State<UploadPage> {
     final fileName = basename(file!.path);
     final destination = 'games/game1/$fileName';
 
-    task = FirebaseApi.uploadFile(destination, file!);
+    task = UploadRepository.uploadFile(destination, file!);
     setState(() {});
 
     if (task == null) return;
