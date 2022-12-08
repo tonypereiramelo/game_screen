@@ -1,13 +1,15 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/domain/team_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 import '../../global/widgets/box_spacer.dart';
-import '../infrastructure/api.dart';
+import '../infrastructure/upload_videos_repository.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({super.key, required this.theme});
@@ -21,6 +23,7 @@ class _UploadPageState extends State<UploadPage> {
   final bool isVideo = true;
   File? file;
   UploadTask? task;
+  bool uploadIsCompleted = false;
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +93,27 @@ class _UploadPageState extends State<UploadPage> {
     final fileName = basename(file!.path);
     final destination = 'games/game1/$fileName';
 
-    task = FirebaseApi.uploadFile(destination, file!);
-    setState(() {});
+    task = UploadRepository.uploadFile(destination, file!);
 
+    task!.whenComplete(
+      () async {
+        final taskUrl = await task!.snapshot.ref.getDownloadURL();
+        UploadRepository.createDocument(
+          TeamModel(
+            teamName: 'Palmeiras',
+            score: 2,
+            shotType: 'Gol',
+            shotLink: taskUrl,
+            shotDate: task!.snapshot.metadata!.timeCreated,
+            isLeftTeam: false,
+          ),
+        );
+        setState(() {
+          uploadIsCompleted = true;
+        });
+        log(uploadIsCompleted.toString());
+      },
+    );
     if (task == null) return;
   }
 }
