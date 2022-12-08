@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/domain/team_model.dart';
 import 'package:game_screen/game_screen/presentation/widgets/scoreboard_widget.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
 
@@ -10,6 +11,50 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  List<TeamModel> teams = [
+    TeamModel(
+      teamName: 'Team1',
+      score: 1,
+      shotType: 'Goal',
+      isLeftTeam: true,
+    ),
+    TeamModel(
+      teamName: 'Team2',
+      score: 0,
+      shotType: 'foul',
+      isLeftTeam: false,
+    ),
+    TeamModel(
+      teamName: 'Team2',
+      score: 1,
+      shotType: 'Goal',
+      isLeftTeam: false,
+    ),
+    TeamModel(
+      teamName: 'Team1',
+      score: 1,
+      shotType: 'foul',
+      isLeftTeam: true,
+    ),
+    TeamModel(
+      teamName: 'Team1',
+      score: 2,
+      shotType: 'Goal',
+      isLeftTeam: true,
+    ),
+    TeamModel(
+      teamName: 'Team1',
+      score: 2,
+      shotType: 'foul',
+      isLeftTeam: true,
+    ),
+    TeamModel(
+      teamName: 'Team2',
+      score: 1,
+      shotType: 'foul',
+      isLeftTeam: false,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +76,10 @@ class _GamePageState extends State<GamePage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) => const ShotTile(),
+                itemCount: teams.length,
+                itemBuilder: (context, index) => ShotTile(
+                  team: teams[index],
+                ),
               ),
             ),
           ],
