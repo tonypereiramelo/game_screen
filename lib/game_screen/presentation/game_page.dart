@@ -8,15 +8,14 @@ import 'package:get/get.dart';
 class GamePage extends StatelessWidget {
   GamePage({super.key});
 
-  final controller = Get.put(GameScreenController());
+  final controller = Get.put<GameScreenController>(GameScreenController());
 
   @override
   Widget build(BuildContext context) {
-    const link =
-        'https://firebasestorage.googleapis.com/v0/b/game-screen-97060.appspot.com/o/games%2Fgame1%2FVID_20221207_170816.mp4?alt=media&token=743dc857-6787-4d6c-979e-56e056a8c2ce';
     return Obx(
       () {
         if (controller.status.value.isSuccess) {
+          final link = controller.team.value!.shotLink;
           List<TeamModel> teams = [
             TeamModel(
               teamName: 'Team1',

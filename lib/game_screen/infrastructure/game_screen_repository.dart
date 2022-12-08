@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:game_screen/game_screen/domain/team_model.dart';
-import 'package:game_screen/game_screen/infrastructure/core/firebase_helpers.dart';
 
 class GameScreenRepository {
   GameScreenRepository();
@@ -10,14 +9,13 @@ class GameScreenRepository {
   Future<Either<String, TeamModel>> getTeam() async {
     try {
       final doc = firestore
-          .collection('games')
-          .doc('game1')
-          .withConverter<Either<String, TeamModel>>(
-              fromFirestore: fromFirestore, toFirestore: toFirestore);
+          .collection('shots')
+          .doc('16bea230-7729-11ed-bd8b-1b2372dd5b69')
+          .get();
 
-      return await doc.get().then((snapshot) {
+      return await doc.then((snapshot) {
         if (snapshot.exists) {
-          return snapshot.data()!.fold((l) => left(l), (r) => right(r));
+          return right(TeamModel.fromJson(snapshot.data()!).toDomain());
         } else {
           return left('Not Found');
         }

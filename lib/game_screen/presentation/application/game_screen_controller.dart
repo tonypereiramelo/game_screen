@@ -17,9 +17,16 @@ class GameScreenController extends GetxController {
 
   Future<void> getTeam() async {
     status.value = RxStatus.loading();
-    await repository
-        .getTeam()
-        .then((value) => value.fold((l) => null, (r) => team.value = r))
-        .whenComplete(() => status.value = RxStatus.success());
+    await repository.getTeam().then(
+          (value) => value.fold(
+            (l) {
+              status.value = RxStatus.error(l);
+            },
+            (r) {
+              team.value = r;
+              status.value = RxStatus.success();
+            },
+          ),
+        );
   }
 }
