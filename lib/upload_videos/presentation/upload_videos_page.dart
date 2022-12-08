@@ -24,6 +24,7 @@ class _UploadPageState extends State<UploadPage> {
   File? file;
   UploadTask? task;
   bool uploadIsCompleted = false;
+  bool taskIsNull = true;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,22 @@ class _UploadPageState extends State<UploadPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 120),
               child: ElevatedButton(
-                onPressed: uploadFile,
+                onPressed: () {
+                  uploadFile().whenComplete(() => ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.green,
+                      content: Text('Sucesso!'),
+                    ),
+                  ),);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: taskIsNull ? Colors.red : Colors.green,
+                      content: taskIsNull
+                          ? const Text('Selecione um arquivo!')
+                          : const Text('Enviando arquivo'),
+                    ),
+                  );
+                },
                 style: widget.theme.elevatedButtonTheme.style,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -95,25 +111,35 @@ class _UploadPageState extends State<UploadPage> {
 
     task = UploadRepository.uploadFile(destination, file!);
 
-    task!.whenComplete(
-      () async {
-        final taskUrl = await task!.snapshot.ref.getDownloadURL();
-        UploadRepository.createDocument(
-          TeamModel(
-            teamName: 'Palmeiras',
-            score: 2,
-            shotType: 'Gol',
-            shotLink: taskUrl,
-            shotDate: task!.snapshot.metadata!.timeCreated,
-            isLeftTeam: false,
-          ),
-        );
-        setState(() {
-          uploadIsCompleted = true;
-        });
-        log(uploadIsCompleted.toString());
-      },
-    );
+    if (task != null) {
+      setState(() {
+        taskIsNull = false;
+      });
+      task!.whenComplete(
+        () async {
+          final taskUrl = await task!.snapshot.ref.getDownloadURL();
+          UploadRepository.createDocument(
+            TeamModel(
+              teamName: 'Palmeiras',
+              score: 2,
+              shotType: 'Gol',
+              shotLink: taskUrl,
+              shotDate: task!.snapshot.metadata!.timeCreated,
+              isLeftTeam: false,
+            ),
+          );
+          setState(() {
+            uploadIsCompleted = true;
+          });
+          log(uploadIsCompleted.toString());
+        },
+      );
+    } else {
+      setState(() {
+        taskIsNull = true;
+      });
+    }
+
     if (task == null) return;
   }
 }
