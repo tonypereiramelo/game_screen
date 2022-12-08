@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/shot_visualizer/presentation/shot_page.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class ShotTile extends StatelessWidget {
@@ -26,7 +27,11 @@ class ShotTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ShotPage(),
+                      ),
+                    ),
                     icon: const Icon(Icons.play_circle),
                   ),
                   Padding(
@@ -54,7 +59,11 @@ class ShotTile extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ShotPage(),
+                      ),
+                    ),
                     icon: const Icon(Icons.play_circle),
                   )
                 ],
