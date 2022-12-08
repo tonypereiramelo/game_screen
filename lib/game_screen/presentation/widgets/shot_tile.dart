@@ -9,6 +9,7 @@ class ShotTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return TimelineTile(
       indicatorStyle: const IndicatorStyle(
         width: 40,
@@ -30,7 +31,10 @@ class ShotTile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
-                    child: Text(team.shotType.toString()),
+                    child: Text(
+                      team.shotType.toString(),
+                      style: theme.textTheme.headline6,
+                    ),
                   ),
                 ],
               ),
@@ -44,7 +48,10 @@ class ShotTile extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
-                    child: Text(team.shotType.toString()),
+                    child: Text(
+                      team.shotType.toString(),
+                      style: theme.textTheme.headline6,
+                    ),
                   ),
                   IconButton(
                     onPressed: () {},

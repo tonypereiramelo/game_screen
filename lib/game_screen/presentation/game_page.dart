@@ -21,7 +21,7 @@ class _GamePageState extends State<GamePage> {
     TeamModel(
       teamName: 'Team2',
       score: 0,
-      shotType: 'foul',
+      shotType: 'Foul',
       isLeftTeam: false,
     ),
     TeamModel(
@@ -33,7 +33,7 @@ class _GamePageState extends State<GamePage> {
     TeamModel(
       teamName: 'Team1',
       score: 1,
-      shotType: 'foul',
+      shotType: 'Foul',
       isLeftTeam: true,
     ),
     TeamModel(
@@ -45,13 +45,13 @@ class _GamePageState extends State<GamePage> {
     TeamModel(
       teamName: 'Team1',
       score: 2,
-      shotType: 'foul',
+      shotType: 'Foul',
       isLeftTeam: true,
     ),
     TeamModel(
       teamName: 'Team2',
       score: 1,
-      shotType: 'foul',
+      shotType: 'Foul',
       isLeftTeam: false,
     ),
   ];
