@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>465842792283-hbvv5l63ddhcesr0tid6l5euod076tg0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.465842792283-hbvv5l63ddhcesr0tid6l5euod076tg0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAxWQxIRLZpwW98JLvldGboERTV9xi6xt4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>465842792283</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.gameScreen</string>
+	<key>PROJECT_ID</key>
+	<string>game-screen-97060</string>
+	<key>STORAGE_BUCKET</key>
+	<string>game-screen-97060.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:465842792283:ios:2f31e45edd87344ae81c7e</string>
+</dict>
+</plist>

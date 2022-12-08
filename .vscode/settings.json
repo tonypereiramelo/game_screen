@@ -1,0 +1,6 @@
+{
+    "conventionalCommits.scopes": [
+        "firebase",
+        "game_screen"
+    ]
+}
