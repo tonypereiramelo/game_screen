@@ -20,16 +20,17 @@ class TeamModel {
 
   Map<String, dynamic> toJson() {
     return {
-      "teamName": teamName,
-      "score": score,
-      "shotType": shotType,
-      "shotLink": shotLink,
-      "shotDate": shotDate,
-      "isLeftTeam": isLeftTeam,
+        "teamName": teamName,
+        "score": score,
+        "shotType": shotType,
+        "shotLink": shotLink,
+        "shotDate": shotDate,
+        "isLeftTeam": isLeftTeam,
+      
     };
   }
 
-  TeamModel toDomain(){
+  TeamModel toDomain() {
     return TeamModel(
       teamName: teamName,
       score: score,

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/domain/team_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../global/widgets/box_spacer.dart';
 import '../infrastructure/upload_videos_repository.dart';
@@ -58,35 +59,102 @@ class _UploadPageState extends State<UploadPage> {
               ),
             ),
             const DSBoxSpacer.large(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 120),
-              child: ElevatedButton(
-                onPressed: () {
-                  uploadFile().whenComplete(() => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      backgroundColor: Colors.green,
-                      content: Text('Sucesso!'),
-                    ),
-                  ),);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: taskIsNull ? Colors.red : Colors.green,
-                      content: taskIsNull
-                          ? const Text('Selecione um arquivo!')
-                          : const Text('Enviando arquivo'),
-                    ),
-                  );
-                },
-                style: widget.theme.elevatedButtonTheme.style,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Icon(Icons.upload),
-                    DSBoxSpacer.small(),
-                    Text('Upload video'),
-                  ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    uploadFile(
+                      isLeftTeam: true,
+                      score: 1,
+                      shotType: 'Falta',
+                      teamName: 'Corinthians',
+                    ).whenComplete(
+                      () => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Sucesso!'),
+                        ),
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: taskIsNull ? Colors.red : Colors.green,
+                        content: taskIsNull
+                            ? const Text('Selecione um arquivo!')
+                            : const Text('Enviando arquivo'),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(Icons.upload),
+                      DSBoxSpacer.small(),
+                      SizedBox(
+                        width: 95,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
+                            'Upload video to Left Team',
+                            style: TextStyle(
+                                color: Colors.white,
+                                height: 1.5,
+                                wordSpacing: 2),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                const DSBoxSpacer(),
+                ElevatedButton(
+                  onPressed: () {
+                    uploadFile(
+                      isLeftTeam: false,
+                      score: 10,
+                      shotType: 'Gol',
+                      teamName: 'Palmeiras',
+                    ).whenComplete(
+                      () => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Sucesso!'),
+                        ),
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: taskIsNull ? Colors.red : Colors.green,
+                        content: taskIsNull
+                            ? const Text('Selecione um arquivo!')
+                            : const Text('Enviando arquivo'),
+                      ),
+                    );
+                  },
+                  style: widget.theme.elevatedButtonTheme.style,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(Icons.upload),
+                      DSBoxSpacer.small(),
+                      SizedBox(
+                        width: 95,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
+                            'Upload video to Right Team',
+                            style: TextStyle(
+                                color: Colors.white,
+                                height: 1.5,
+                                wordSpacing: 2),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -103,11 +171,15 @@ class _UploadPageState extends State<UploadPage> {
     setState(() => file = File(path));
   }
 
-  Future uploadFile() async {
+  Future uploadFile(
+      {required String teamName,
+      required int score,
+      required String shotType,
+      required bool isLeftTeam}) async {
     if (file == null) return;
 
     final fileName = basename(file!.path);
-    final destination = 'games/game1/$fileName';
+    final destination = 'shots/$fileName';
 
     task = UploadRepository.uploadFile(destination, file!);
 
@@ -118,15 +190,17 @@ class _UploadPageState extends State<UploadPage> {
       task!.whenComplete(
         () async {
           final taskUrl = await task!.snapshot.ref.getDownloadURL();
+          final uid = const Uuid().v1();
           UploadRepository.createDocument(
             TeamModel(
-              teamName: 'Palmeiras',
-              score: 2,
-              shotType: 'Gol',
+              teamName: teamName,
+              score: score,
+              shotType: shotType,
               shotLink: taskUrl,
               shotDate: task!.snapshot.metadata!.timeCreated,
               isLeftTeam: false,
             ),
+            uid,
           );
           setState(() {
             uploadIsCompleted = true;
