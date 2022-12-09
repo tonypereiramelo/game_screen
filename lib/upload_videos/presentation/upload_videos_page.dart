@@ -104,7 +104,6 @@ class _UploadPageState extends State<UploadPage> {
             score: 2,
             shotType: 'Gol',
             shotLink: taskUrl,
-            shotDate: task!.snapshot.metadata!.timeCreated,
             isLeftTeam: false,
           ),
         );

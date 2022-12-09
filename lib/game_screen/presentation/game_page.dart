@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
 import 'package:game_screen/game_screen/presentation/application/game_screen_controller.dart';
 import 'package:game_screen/game_screen/presentation/widgets/scoreboard_widget.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
@@ -15,59 +14,6 @@ class GamePage extends StatelessWidget {
     return Obx(
       () {
         if (controller.status.value.isSuccess) {
-          final link = controller.team.value!.shotLink;
-          List<TeamModel> teams = [
-            TeamModel(
-              teamName: 'Team1',
-              score: 1,
-              shotType: 'Goal',
-              isLeftTeam: true,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team2',
-              score: 0,
-              shotType: 'Foul',
-              isLeftTeam: false,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team2',
-              score: 1,
-              shotType: 'Goal',
-              isLeftTeam: false,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team1',
-              score: 1,
-              shotType: 'Foul',
-              isLeftTeam: true,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team1',
-              score: 2,
-              shotType: 'Goal',
-              isLeftTeam: true,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team1',
-              score: 2,
-              shotType: 'Foul',
-              isLeftTeam: true,
-              shotLink: link,
-            ),
-            TeamModel(
-              teamName: 'Team2',
-              score: 1,
-              shotType: 'Foul',
-              isLeftTeam: false,
-              shotLink: link,
-            ),
-          ];
-
           return Scaffold(
             appBar: AppBar(
               title: const Text('Game'),
@@ -87,9 +33,9 @@ class GamePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: teams.length,
+                      itemCount: controller.teams.value!.length,
                       itemBuilder: (context, index) => ShotTile(
-                        team: teams[index],
+                        team: controller.teams.value![index],
                       ),
                     ),
                   ),

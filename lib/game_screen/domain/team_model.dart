@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class TeamModel {
   TeamModel({
     this.teamName,
     this.score,
     this.shotType,
     this.shotLink,
-    this.shotDate,
     this.isLeftTeam,
   });
 
@@ -12,7 +13,6 @@ class TeamModel {
   int? score;
   String? shotType;
   String? shotLink;
-  DateTime? shotDate;
   bool? isLeftTeam;
 
   factory TeamModel.fromJson(Map<String, dynamic> json) =>
@@ -24,9 +24,16 @@ class TeamModel {
       "score": score,
       "shotType": shotType,
       "shotLink": shotLink,
-      "shotDate": shotDate,
       "isLeftTeam": isLeftTeam,
     };
+  }
+
+  TeamModel.fromDocument(DocumentSnapshot<Map<String, dynamic>> document) {
+    teamName = document.data()!.values.toList()[0];
+    score = document.data()!.values.toList()[1];
+    shotType = document.data()!.values.toList()[2];
+    shotLink = document.data()!.values.toList()[4];
+    isLeftTeam = document.data()!.values.toList()[3];
   }
 
   TeamModel toDomain() {
@@ -35,7 +42,6 @@ class TeamModel {
       score: score,
       shotType: shotType,
       shotLink: shotLink,
-      shotDate: shotDate,
       isLeftTeam: isLeftTeam,
     );
   }
@@ -45,7 +51,6 @@ class TeamModel {
         score: teamModel.score,
         shotType: teamModel.shotType,
         shotLink: teamModel.shotLink,
-        shotDate: teamModel.shotDate,
         isLeftTeam: teamModel.isLeftTeam,
       );
 }

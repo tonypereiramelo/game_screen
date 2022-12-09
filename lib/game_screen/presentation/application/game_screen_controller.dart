@@ -7,7 +7,7 @@ class GameScreenController extends GetxController {
   final repository = GameScreenRepository();
 
   final status = Rx<RxStatus>(RxStatus.empty());
-  final team = Rxn<TeamModel>();
+  final teams = Rxn<List<TeamModel>>();
 
   @override
   void onInit() {
@@ -23,7 +23,7 @@ class GameScreenController extends GetxController {
               status.value = RxStatus.error(l);
             },
             (r) {
-              team.value = r;
+              teams.value = r;
               status.value = RxStatus.success();
             },
           ),
