@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/presentation/constants.dart';
 import 'package:game_screen/global/presentation/units.dart';
 import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 
@@ -27,7 +28,7 @@ class ScoreboardWidget extends StatelessWidget {
       borderRadius: const BorderRadius.all(Radius.circular(DSUnits.medium)),
       child: Container(
         color: Colors.grey,
-        height: 150,
+        height: GameScreenThemeConstants.scoreboardSize,
         width: MediaQuery.of(context).size.width,
         child: Padding(
           padding: const EdgeInsets.all(DSUnits.medium),
@@ -38,16 +39,19 @@ class ScoreboardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 30,
-                    child: Icon(size: 38, leftTeamIcon),
+                    radius: GameScreenThemeConstants.scoreboardRadius,
+                    child: Icon(
+                        size: GameScreenThemeConstants.scoreboardSizeMedium,
+                        leftTeamIcon),
                   ),
                   const DSBoxSpacer.medium(),
                   ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(DSUnits.small)),
                     child: Container(
                       color: Colors.black45,
-                      height: 58,
-                      width: 38,
+                      height: GameScreenThemeConstants.scoreHeight,
+                      width: GameScreenThemeConstants.scoreboardSizeMedium,
                       child: Center(
                         child: Text(
                           leftScore,
@@ -58,11 +62,12 @@ class ScoreboardWidget extends StatelessWidget {
                   ),
                   const DSBoxSpacer.medium(),
                   ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(DSUnits.small)),
                     child: Container(
                       color: Colors.black45,
-                      height: 58,
-                      width: 38,
+                      height: GameScreenThemeConstants.scoreHeight,
+                      width: GameScreenThemeConstants.scoreboardSizeMedium,
                       child: Center(
                         child: Text(
                           rigthScore,
@@ -73,8 +78,10 @@ class ScoreboardWidget extends StatelessWidget {
                   ),
                   const DSBoxSpacer.medium(),
                   CircleAvatar(
-                    radius: 30,
-                    child: Icon(size: 38, rigthTeamIcon),
+                    radius: GameScreenThemeConstants.scoreboardRadius,
+                    child: Icon(
+                        size: GameScreenThemeConstants.scoreboardSizeMedium,
+                        rigthTeamIcon),
                   ),
                 ],
               ),

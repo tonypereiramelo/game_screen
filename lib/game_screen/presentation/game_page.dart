@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game_screen/game_screen/presentation/application/game_screen_controller.dart';
+import 'package:game_screen/game_screen/application/game_screen_controller.dart';
 import 'package:game_screen/game_screen/presentation/widgets/scoreboard_widget.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
 import 'package:game_screen/global/presentation/units.dart';
