@@ -17,7 +17,7 @@ class TeamModel {
   String? shotLink;
   bool? isLeftTeam;
   DateTime? shotDate;
-  List<Map>? comments;
+  List<Map<String, String>>? comments;
 
   factory TeamModel.fromJson(Map<String, dynamic> json) =>
       TeamModel.fromJson(json);

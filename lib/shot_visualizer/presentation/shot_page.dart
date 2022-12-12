@@ -69,7 +69,7 @@ class _ShotPageState extends State<ShotPage> {
             SizedBox(
                 height: DSThemeConstants.widgetSizeXXLarge,
                 width: MediaQuery.of(context).size.width,
-                child: const ShotComments()),
+                child: ShotComments()),
           ],
         ),
       ),
