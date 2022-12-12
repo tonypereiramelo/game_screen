@@ -11,10 +11,10 @@ class DSBoxSpacer extends SizedBox {
   const DSBoxSpacer.xSmall({super.key})
       : super.square(dimension: DSUnits.xSmall);
 
-  const DSBoxSpacer.small({super.key})
-      : super.square(dimension: DSUnits.small);
+  const DSBoxSpacer.small({super.key}) : super.square(dimension: DSUnits.small);
 
-  const DSBoxSpacer.large({super.key})
-      : super.square(dimension: DSUnits.large);
+  const DSBoxSpacer.medium({super.key})
+      : super.square(dimension: DSUnits.medium);
 
+  const DSBoxSpacer.large({super.key}) : super.square(dimension: DSUnits.large);
 }
