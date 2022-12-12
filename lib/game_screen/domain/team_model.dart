@@ -5,6 +5,7 @@ class TeamModel {
     this.shotType,
     this.shotLink,
     this.isLeftTeam,
+    this.shotDate,
   });
 
   String? teamName;
@@ -12,6 +13,7 @@ class TeamModel {
   String? shotType;
   String? shotLink;
   bool? isLeftTeam;
+  DateTime? shotDate;
 
   factory TeamModel.fromJson(Map<String, dynamic> json) =>
       TeamModel.fromJson(json);
@@ -23,6 +25,7 @@ class TeamModel {
       "shotType": shotType,
       "shotLink": shotLink,
       "isLeftTeam": isLeftTeam,
+      "shotDate": shotDate.toString(),
     };
   }
 
@@ -33,6 +36,7 @@ class TeamModel {
       shotType: shotType,
       shotLink: shotLink,
       isLeftTeam: isLeftTeam,
+      shotDate: shotDate,
     );
   }
 
@@ -42,5 +46,6 @@ class TeamModel {
         shotType: teamModel.shotType,
         shotLink: teamModel.shotLink,
         isLeftTeam: teamModel.isLeftTeam,
+        shotDate: teamModel.shotDate!
       );
 }

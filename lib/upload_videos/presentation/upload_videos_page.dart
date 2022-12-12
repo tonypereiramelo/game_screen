@@ -69,6 +69,7 @@ class _UploadPageState extends State<UploadPage> {
                       score: 1,
                       shotType: 'Falta',
                       teamName: 'Corinthians',
+                      shotDate: DateTime.now(),
                     ).whenComplete(
                       () => ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -115,6 +116,7 @@ class _UploadPageState extends State<UploadPage> {
                       score: 10,
                       shotType: 'Gol',
                       teamName: 'Palmeiras',
+                      shotDate: DateTime.now(),
                     ).whenComplete(
                       () => ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -171,11 +173,13 @@ class _UploadPageState extends State<UploadPage> {
     setState(() => file = File(path));
   }
 
-  Future uploadFile(
-      {required String teamName,
-      required int score,
-      required String shotType,
-      required bool isLeftTeam}) async {
+  Future uploadFile({
+    required String teamName,
+    required int score,
+    required String shotType,
+    required bool isLeftTeam,
+    required DateTime shotDate,
+  }) async {
     if (file == null) return;
 
     final fileName = basename(file!.path);
@@ -198,6 +202,7 @@ class _UploadPageState extends State<UploadPage> {
               shotType: shotType,
               shotLink: taskUrl,
               isLeftTeam: false,
+              shotDate: shotDate,
             ),
             uid,
           );
