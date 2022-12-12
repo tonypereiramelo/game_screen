@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 style: theme.elevatedButtonTheme.style,
-                child: const Text('Uploads Page'),
+                child: const Text('Upload Shots Page'),
               ),
               const DSBoxSpacer.small(),
               ElevatedButton(
