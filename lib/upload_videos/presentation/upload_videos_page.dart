@@ -9,7 +9,7 @@ import 'package:game_screen/game_screen/domain/team_model.dart';
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../global/widgets/box_spacer.dart';
+import '../../global/presentation/widgets/box_spacer.dart';
 import '../infrastructure/upload_videos_repository.dart';
 
 class UploadPage extends StatefulWidget {
