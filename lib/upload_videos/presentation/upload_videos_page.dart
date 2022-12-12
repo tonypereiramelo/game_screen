@@ -197,7 +197,6 @@ class _UploadPageState extends State<UploadPage> {
               score: score,
               shotType: shotType,
               shotLink: taskUrl,
-              shotDate: task!.snapshot.metadata!.timeCreated,
               isLeftTeam: false,
             ),
             uid,

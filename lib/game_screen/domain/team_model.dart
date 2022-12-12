@@ -4,7 +4,6 @@ class TeamModel {
     this.score,
     this.shotType,
     this.shotLink,
-    this.shotDate,
     this.isLeftTeam,
   });
 
@@ -12,7 +11,6 @@ class TeamModel {
   int? score;
   String? shotType;
   String? shotLink;
-  DateTime? shotDate;
   bool? isLeftTeam;
 
   factory TeamModel.fromJson(Map<String, dynamic> json) =>
@@ -20,13 +18,11 @@ class TeamModel {
 
   Map<String, dynamic> toJson() {
     return {
-        "teamName": teamName,
-        "score": score,
-        "shotType": shotType,
-        "shotLink": shotLink,
-        "shotDate": shotDate,
-        "isLeftTeam": isLeftTeam,
-      
+      "teamName": teamName,
+      "score": score,
+      "shotType": shotType,
+      "shotLink": shotLink,
+      "isLeftTeam": isLeftTeam,
     };
   }
 
@@ -36,8 +32,15 @@ class TeamModel {
       score: score,
       shotType: shotType,
       shotLink: shotLink,
-      shotDate: shotDate,
       isLeftTeam: isLeftTeam,
     );
   }
+
+  factory TeamModel.fromDomain(TeamModel teamModel) => TeamModel(
+        teamName: teamModel.teamName,
+        score: teamModel.score,
+        shotType: teamModel.shotType,
+        shotLink: teamModel.shotLink,
+        isLeftTeam: teamModel.isLeftTeam,
+      );
 }
