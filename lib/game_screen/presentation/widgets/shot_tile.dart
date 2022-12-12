@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/game_screen/presentation/constants.dart';
+import 'package:game_screen/global/presentation/units.dart';
 import 'package:game_screen/shot_visualizer/presentation/shot_page.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -13,8 +15,8 @@ class ShotTile extends StatelessWidget {
     final theme = Theme.of(context);
     return TimelineTile(
       indicatorStyle: const IndicatorStyle(
-        width: 40,
-        height: 40,
+        width: GameScreenThemeConstants.scoreTimeLineSize,
+        height: GameScreenThemeConstants.scoreTimeLineSize,
         indicator: CircleAvatar(
           child: Icon(Icons.person),
         ),
@@ -22,7 +24,7 @@ class ShotTile extends StatelessWidget {
       alignment: TimelineAlign.center,
       startChild: team.isLeftTeam!
           ? Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(DSUnits.medium),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -37,7 +39,7 @@ class ShotTile extends StatelessWidget {
                     icon: const Icon(Icons.play_circle),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(DSUnits.xLarge, 0, 0, 0),
                     child: Text(
                       team.shotType.toString(),
                       style: theme.textTheme.headline6,
@@ -49,12 +51,12 @@ class ShotTile extends StatelessWidget {
           : null,
       endChild: !team.isLeftTeam!
           ? Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(DSUnits.medium),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(DSUnits.xLarge, 0, 0, 0),
                     child: Text(
                       team.shotType.toString(),
                       style: theme.textTheme.headline6,
