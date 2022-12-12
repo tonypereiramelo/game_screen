@@ -12,16 +12,9 @@ class GameScreenRepository {
 
       return await doc.then((snapshot) {
         if (snapshot.docs.isNotEmpty) {
-          return right(snapshot.docs.map((value) {
-            return TeamModel(
-              teamName: value.data().values.toList()[0],
-              score: value.data().values.toList()[1],
-              shotDate: DateTime.parse(value.data().values.toList()[2]),
-              shotType: value.data().values.toList()[3],
-              isLeftTeam: value.data().values.toList()[4],
-              shotLink: value.data().values.toList()[5],
-            );
-          }).toList());
+          return right(snapshot.docs
+              .map((value) => TeamModel.fromDocument(value))
+              .toList());
         } else {
           return left('Not Found');
         }
