@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/global/presentation/units.dart';
+import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 
 class ShotCommentTile extends StatelessWidget {
   const ShotCommentTile(
@@ -10,15 +12,13 @@ class ShotCommentTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(DSUnits.small),
       child: Row(
         children: [
           const CircleAvatar(
             child: Icon(Icons.person),
           ),
-          const SizedBox(
-            width: 16,
-          ),
+          const DSBoxSpacer.medium(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -26,16 +26,12 @@ class ShotCommentTile extends StatelessWidget {
                 userName,
                 style: theme.textTheme.subtitle2,
               ),
-              const SizedBox(
-                height: 2,
-              ),
+              const DSBoxSpacer.xxSmall(),
               Text(
                 userComment,
                 style: theme.textTheme.subtitle2,
               ),
-              const SizedBox(
-                height: 2,
-              ),
+              const DSBoxSpacer.xxSmall(),
               InkWell(
                   onTap: () {},
                   child: Text(

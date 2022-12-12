@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:game_screen/global/widgets/box_spacer.dart';
+import 'package:game_screen/global/presentation/constants.dart';
+import 'package:game_screen/global/presentation/units.dart';
+import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 import 'package:game_screen/shot_visualizer/presentation/widgets/shot_comments.dart';
 import 'package:video_player/video_player.dart';
 
@@ -42,13 +44,14 @@ class _ShotPageState extends State<ShotPage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(DSUnits.medium),
         child: ListView(
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
+              borderRadius:
+                  const BorderRadius.all(Radius.circular(DSUnits.medium)),
               child: SizedBox(
-                height: 200,
+                height: DSThemeConstants.widgetSizeXLarge,
                 width: MediaQuery.of(context).size.width,
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   VideoPlayer(controller),
@@ -58,22 +61,21 @@ class _ShotPageState extends State<ShotPage> {
                 ]),
               ),
             ),
-            const SizedBox(
-              height: 8,
-            ),
+            const DSBoxSpacer.small(),
             Text(
               'Comments',
               style: theme.textTheme.headline6,
             ),
             SizedBox(
-                height: 400,
+                height: DSThemeConstants.widgetSizeXXLarge,
                 width: MediaQuery.of(context).size.width,
                 child: const ShotComments()),
           ],
         ),
       ),
       bottomSheet: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        padding:
+            const EdgeInsets.fromLTRB(DSUnits.medium, 0, DSUnits.medium, 0),
         child: TextField(
           decoration: InputDecoration(
               prefixIcon: Row(
@@ -89,7 +91,7 @@ class _ShotPageState extends State<ShotPage> {
               hintStyle: theme.textTheme.button,
               suffixIcon:
                   IconButton(onPressed: () {}, icon: const Icon(Icons.send)),
-              contentPadding: const EdgeInsets.all(24)),
+              contentPadding: const EdgeInsets.all(DSUnits.large)),
         ),
       ),
     );
