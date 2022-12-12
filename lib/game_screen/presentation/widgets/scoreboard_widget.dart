@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/global/presentation/units.dart';
+import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 
 class ScoreboardWidget extends StatelessWidget {
   const ScoreboardWidget({
@@ -22,13 +24,13 @@ class ScoreboardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
+      borderRadius: const BorderRadius.all(Radius.circular(DSUnits.medium)),
       child: Container(
         color: Colors.grey,
         height: 150,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(DSUnits.medium),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -39,9 +41,7 @@ class ScoreboardWidget extends StatelessWidget {
                     radius: 30,
                     child: Icon(size: 38, leftTeamIcon),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
+                  const DSBoxSpacer.medium(),
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     child: Container(
@@ -56,9 +56,7 @@ class ScoreboardWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
+                  const DSBoxSpacer.medium(),
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     child: Container(
@@ -73,18 +71,14 @@ class ScoreboardWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
+                  const DSBoxSpacer.medium(),
                   CircleAvatar(
                     radius: 30,
                     child: Icon(size: 38, rigthTeamIcon),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 16,
-              ),
+              const DSBoxSpacer.medium(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -92,9 +86,7 @@ class ScoreboardWidget extends StatelessWidget {
                     leftTeamName,
                     style: theme.textTheme.headline6,
                   ),
-                  const SizedBox(
-                    width: 16,
-                  ),
+                  const DSBoxSpacer.medium(),
                   Text(
                     rigthTeamName,
                     style: theme.textTheme.headline6,

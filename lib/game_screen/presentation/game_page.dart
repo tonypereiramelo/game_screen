@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/presentation/application/game_screen_controller.dart';
 import 'package:game_screen/game_screen/presentation/widgets/scoreboard_widget.dart';
 import 'package:game_screen/game_screen/presentation/widgets/shot_tile.dart';
+import 'package:game_screen/global/presentation/units.dart';
 import 'package:get/get.dart';
 
 class GamePage extends StatelessWidget {
@@ -20,7 +21,7 @@ class GamePage extends StatelessWidget {
               centerTitle: true,
             ),
             body: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(DSUnits.medium),
               child: Column(
                 children: [
                   const ScoreboardWidget(
