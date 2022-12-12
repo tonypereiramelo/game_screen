@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_screen/game_screen/presentation/game_page.dart';
-import 'package:game_screen/global/widgets/box_spacer.dart';
+import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 
 import 'upload_videos/presentation/upload_videos_page.dart';
 
