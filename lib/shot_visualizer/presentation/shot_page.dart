@@ -94,8 +94,9 @@ class _ShotPageState extends State<ShotPage> {
           controller: textEditingController,
           autofocus: true,
           onSubmitted: (value) => setState(() {
-            gameScreenController.comments.value.add(textEditingController.text);
-            gameScreenController.comments.value.reversed;
+            gameScreenController.comments.value
+                .insert(0, textEditingController.text);
+            FocusManager.instance.primaryFocus?.unfocus();
             textEditingController.clear();
           }),
           decoration: InputDecoration(
@@ -114,8 +115,8 @@ class _ShotPageState extends State<ShotPage> {
                   onPressed: () {
                     setState(() {
                       gameScreenController.comments.value
-                          .add(textEditingController.text);
-                      gameScreenController.comments.value.reversed;
+                          .insert(0, textEditingController.text);
+                      FocusManager.instance.primaryFocus?.unfocus();
                       textEditingController.clear();
                     });
                   },
