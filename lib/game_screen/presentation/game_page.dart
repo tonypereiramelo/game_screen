@@ -27,10 +27,10 @@ class GamePage extends StatelessWidget {
                   ScoreboardWidget(
                     leftScore: controller.leftScore.value.toString(),
                     leftTeamIcon: Icons.ac_unit_outlined,
-                    leftTeamName: 'Team1',
+                    leftTeamName: 'Left Team',
                     rigthScore: controller.rigthScore.value.toString(),
                     rigthTeamIcon: Icons.sports_soccer,
-                    rigthTeamName: 'Team2',
+                    rigthTeamName: 'Right Team',
                   ),
                   Expanded(
                     child: ListView.builder(
