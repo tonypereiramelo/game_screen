@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/global/domain/team_model.dart';
 
 class GameScreenRepository {
   GameScreenRepository();

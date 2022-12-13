@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/global/domain/team_model.dart';
 import 'package:game_screen/upload_videos/infrastructure/core/firestore_helpers.dart';
 
 class UploadRepository {

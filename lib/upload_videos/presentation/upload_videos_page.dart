@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/global/domain/team_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';

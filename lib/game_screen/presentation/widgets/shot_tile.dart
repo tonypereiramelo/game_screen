@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/global/domain/team_model.dart';
 import 'package:game_screen/game_screen/presentation/constants.dart';
 import 'package:game_screen/global/presentation/units.dart';
 import 'package:game_screen/shot_visualizer/presentation/shot_page.dart';

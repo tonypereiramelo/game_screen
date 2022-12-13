@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../game_screen/domain/team_model.dart';
+import '../../../global/domain/team_model.dart';
 
 TeamModel fromFirestore(
   DocumentSnapshot<Map<String, dynamic>> snapshot,

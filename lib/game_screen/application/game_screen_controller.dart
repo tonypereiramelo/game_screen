@@ -1,4 +1,4 @@
-import 'package:game_screen/game_screen/domain/team_model.dart';
+import 'package:game_screen/global/domain/team_model.dart';
 import 'package:game_screen/game_screen/infrastructure/game_screen_repository.dart';
 import 'package:get/get.dart';
 
