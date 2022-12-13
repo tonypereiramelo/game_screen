@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/application/game_screen_controller.dart';
 import 'package:game_screen/global/presentation/constants.dart';
 import 'package:game_screen/global/presentation/units.dart';
 import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
 import 'package:game_screen/shot_visualizer/presentation/widgets/shot_comments.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class ShotPage extends StatefulWidget {
@@ -16,10 +18,13 @@ class ShotPage extends StatefulWidget {
 
 class _ShotPageState extends State<ShotPage> {
   late VideoPlayerController controller;
+  late GameScreenController gameScreenController;
   @override
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(widget.videoLink);
+    gameScreenController =
+        Get.put<GameScreenController>(GameScreenController());
 
     controller.addListener(() {
       setState(() {});
@@ -37,6 +42,7 @@ class _ShotPageState extends State<ShotPage> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -66,10 +72,18 @@ class _ShotPageState extends State<ShotPage> {
               'Comments',
               style: theme.textTheme.headline6,
             ),
-            SizedBox(
+            Obx(
+              () => SizedBox(
                 height: DSThemeConstants.widgetSizeXXLarge,
                 width: MediaQuery.of(context).size.width,
-                child: ShotComments()),
+                child: gameScreenController.comments.value != []
+                    ? ShotComments()
+                    : Text(
+                        'Not comments',
+                        style: theme.textTheme.headline6,
+                      ),
+              ),
+            ),
           ],
         ),
       ),
@@ -77,6 +91,8 @@ class _ShotPageState extends State<ShotPage> {
         padding:
             const EdgeInsets.fromLTRB(DSUnits.medium, 0, DSUnits.medium, 0),
         child: TextField(
+          controller: textEditingController,
+          autofocus: true,
           decoration: InputDecoration(
               prefixIcon: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -89,8 +105,16 @@ class _ShotPageState extends State<ShotPage> {
               ),
               hintText: 'Write your comment',
               hintStyle: theme.textTheme.button,
-              suffixIcon:
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.send)),
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      gameScreenController.comments.value
+                          .add(textEditingController.text);
+                      gameScreenController.comments.value.reversed;
+                      textEditingController.clear();
+                    });
+                  },
+                  icon: const Icon(Icons.send)),
               contentPadding: const EdgeInsets.all(DSUnits.large)),
         ),
       ),

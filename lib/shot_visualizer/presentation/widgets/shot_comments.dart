@@ -17,13 +17,10 @@ class ShotComments extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
-            itemCount: controller.shots.value!.length,
+            itemCount: controller.comments.value.length,
             itemBuilder: (context, index) => ShotCommentTile(
-              userName: 'UserName',
-              userComment: controller
-                  .shots.value![index].comments![index].entries
-                  .map((e) => e.key)
-                  .elementAt(index),
+              userName: 'James',
+              userComment: controller.comments.value[index],
             ),
           ),
         );

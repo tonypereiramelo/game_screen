@@ -31,13 +31,6 @@ class ShotCommentTile extends StatelessWidget {
                 userComment,
                 style: theme.textTheme.subtitle2,
               ),
-              const DSBoxSpacer.xxSmall(),
-              InkWell(
-                  onTap: () {},
-                  child: Text(
-                    'Responder',
-                    style: theme.textTheme.button,
-                  )),
             ],
           )
         ],

@@ -8,6 +8,7 @@ class GameScreenController extends GetxController {
 
   final status = Rx<RxStatus>(RxStatus.empty());
   final shots = Rxn<List<TeamModel>>();
+  final comments = Rx<List<String>>([]);
 
   @override
   void onInit() {
