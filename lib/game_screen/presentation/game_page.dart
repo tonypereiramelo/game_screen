@@ -24,11 +24,11 @@ class GamePage extends StatelessWidget {
               padding: const EdgeInsets.all(DSUnits.medium),
               child: Column(
                 children: [
-                  const ScoreboardWidget(
-                    leftScore: '2',
+                  ScoreboardWidget(
+                    leftScore: controller.leftScore.value.toString(),
                     leftTeamIcon: Icons.ac_unit_outlined,
                     leftTeamName: 'Team1',
-                    rigthScore: '1',
+                    rigthScore: controller.rigthScore.value.toString(),
                     rigthTeamIcon: Icons.sports_soccer,
                     rigthTeamName: 'Team2',
                   ),
