@@ -1,6 +1,6 @@
 # VIDEO SCREEN
 
-#### Video demo: <URL>
+#### Video demo: https://youtu.be/BtQXBQuuTU4
 
 #### Description: 
 This app was developed in flutter by Igor Andrade and Tony Melo. We worked together in the same company and took the CS50 course to improve our knowledge.
