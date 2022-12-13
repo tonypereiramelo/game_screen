@@ -25,13 +25,13 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 style: theme.elevatedButtonTheme.style,
-                child: const Text('Uploads Page'),
+                child: const Text('Upload Shots Page'),
               ),
               const DSBoxSpacer.small(),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => GamePage(),
+                    builder: (context) => const GamePage(),
                   ),
                 ),
                 style: theme.elevatedButtonTheme.style,

@@ -6,12 +6,12 @@ import 'package:game_screen/global/presentation/units.dart';
 import 'package:get/get.dart';
 
 class GamePage extends StatelessWidget {
-  GamePage({super.key});
-
-  final controller = Get.put<GameScreenController>(GameScreenController());
+  const GamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final controller = Get.put<GameScreenController>(GameScreenController());
     return Obx(
       () {
         if (controller.status.value.isSuccess) {
@@ -45,12 +45,27 @@ class GamePage extends StatelessWidget {
             ),
           );
         } else if (controller.status.value.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text('Game'),
+              centerTitle: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator.adaptive(),
+            ),
           );
         } else {
-          return const Center(
-            child: Text('Error'),
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text('Game'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Text(
+                'Error',
+                style: theme.textTheme.headline6,
+              ),
+            ),
           );
         }
       },
