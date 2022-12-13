@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "465842792283",
+    "project_id": "game-screen-97060",
+    "storage_bucket": "game-screen-97060.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465842792283:android:5852812335ab6dfee81c7e",
+        "android_client_info": {
+          "package_name": "com.example.game_screen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465842792283-05vhfaijut1as34idipdj6rrnu72t643.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuFkGSo2XxSWJJ9-I8tJBU-sPzen6rcmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465842792283-05vhfaijut1as34idipdj6rrnu72t643.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
