@@ -34,9 +34,9 @@ class GamePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: controller.teams.value!.length,
+                      itemCount: controller.shots.value!.length,
                       itemBuilder: (context, index) => ShotTile(
-                        team: controller.teams.value![index],
+                        team: controller.shots.value![index],
                       ),
                     ),
                   ),

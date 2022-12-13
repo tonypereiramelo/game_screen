@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:game_screen/game_screen/application/game_screen_controller.dart';
 import 'package:game_screen/global/presentation/constants.dart';
 import 'package:game_screen/global/presentation/units.dart';
+import 'package:game_screen/global/presentation/widgets/box_spacer.dart';
+import 'package:game_screen/shot_visualizer/presentation/widgets/shot_comments.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class ShotPage extends StatefulWidget {
@@ -14,10 +18,13 @@ class ShotPage extends StatefulWidget {
 
 class _ShotPageState extends State<ShotPage> {
   late VideoPlayerController controller;
+  late GameScreenController gameScreenController;
   @override
   void initState() {
     super.initState();
     controller = VideoPlayerController.network(widget.videoLink);
+    gameScreenController =
+        Get.put<GameScreenController>(GameScreenController());
 
     controller.addListener(() {
       setState(() {});
@@ -35,6 +42,8 @@ class _ShotPageState extends State<ShotPage> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shot'),
@@ -42,18 +51,76 @@ class _ShotPageState extends State<ShotPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(DSUnits.medium),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(DSUnits.medium)),
-          child: SizedBox(
-            height: DSThemeConstants.widgetSizeXLarge,
-            width: MediaQuery.of(context).size.width,
-            child: Stack(alignment: Alignment.bottomCenter, children: [
-              VideoPlayer(controller),
-              ClosedCaption(text: controller.value.caption.text),
-              _ControlsOverlay(controller: controller),
-              VideoProgressIndicator(controller, allowScrubbing: true),
-            ]),
-          ),
+        child: ListView(
+          children: [
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.all(Radius.circular(DSUnits.medium)),
+              child: SizedBox(
+                height: DSThemeConstants.widgetSizeXLarge,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(alignment: Alignment.bottomCenter, children: [
+                  VideoPlayer(controller),
+                  ClosedCaption(text: controller.value.caption.text),
+                  _ControlsOverlay(controller: controller),
+                  VideoProgressIndicator(controller, allowScrubbing: true),
+                ]),
+              ),
+            ),
+            const DSBoxSpacer.small(),
+            Text(
+              'Comments',
+              style: theme.textTheme.headline6,
+            ),
+            Obx(
+              () => SizedBox(
+                height: DSThemeConstants.widgetSizeXXLarge,
+                width: MediaQuery.of(context).size.width,
+                child: gameScreenController.comments.value != []
+                    ? ShotComments()
+                    : Text(
+                        'Not comments',
+                        style: theme.textTheme.headline6,
+                      ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomSheet: Padding(
+        padding:
+            const EdgeInsets.fromLTRB(DSUnits.medium, 0, DSUnits.medium, 0),
+        child: TextField(
+          controller: textEditingController,
+          autofocus: true,
+          onSubmitted: (value) => setState(() {
+            gameScreenController.comments.value.add(textEditingController.text);
+            gameScreenController.comments.value.reversed;
+            textEditingController.clear();
+          }),
+          decoration: InputDecoration(
+              prefixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  DSBoxSpacer.small()
+                ],
+              ),
+              hintText: 'Write your comment',
+              hintStyle: theme.textTheme.button,
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      gameScreenController.comments.value
+                          .add(textEditingController.text);
+                      gameScreenController.comments.value.reversed;
+                      textEditingController.clear();
+                    });
+                  },
+                  icon: const Icon(Icons.send)),
+              contentPadding: const EdgeInsets.all(DSUnits.large)),
         ),
       ),
     );
