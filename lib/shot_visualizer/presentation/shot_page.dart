@@ -93,7 +93,6 @@ class _ShotPageState extends State<ShotPage> {
         child: TextField(
           controller: textEditingController,
           autofocus: true,
-          textInputAction: TextInputAction.go,
           onSubmitted: (value) => setState(() {
             gameScreenController.comments.value.add(textEditingController.text);
             gameScreenController.comments.value.reversed;
