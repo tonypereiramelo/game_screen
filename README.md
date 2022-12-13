@@ -1,16 +1,12 @@
-# game_screen
+# VIDEO SCREEN
 
-A new Flutter project.
+#### Video demo: <URL>
 
-## Getting Started
+#### Description: 
+This app was developed in flutter by Igor Andrade and Tony Melo. We worked together in the same company and took the CS50 course to improve our knowledge.
+We decided to make this final project in this format because the idea will be reused in a feature of the company we work for.
+Basically, in the same app there is a screen responsible for uploading the bids of a recorded game to our database, a screen to organize and order these bids for the app user and another screen for the user to view these bids.
+We mocked most of the data and made a simple interface, because the most important thing is the application's operating logic.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Igor Andrade 
+Tony Melo (tonypereiramelo@gmail.com)
